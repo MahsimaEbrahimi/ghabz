@@ -106,10 +106,37 @@ namespace ghabz_prg
 
         private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
-            txtname.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
-            txtcodemelli.Text = dataGridView1.CurrentRow.Cells["CodeM"].Value.ToString();
-            txtpassword.Text = dataGridView1.CurrentRow.Cells["Password"].Value.ToString();
-            txtusername.Text = dataGridView1.CurrentRow.Cells["UserName"].Value.ToString();
+            //txtname.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
+            //txtcodemelli.Text = dataGridView1.CurrentRow.Cells["CodeM"].Value.ToString();
+            //txtpassword.Text = dataGridView1.CurrentRow.Cells["Password"].Value.ToString();
+            //txtusername.Text = dataGridView1.CurrentRow.Cells["UserName"].Value.ToString();
+
+            var pData = database.FindUser(dataGridView1.CurrentRow.Cells["CodeM"].Value.ToString());
+            txtname.Text = pData.Rows[0][0].ToString();
+            txtcodemelli.Text = pData.Rows[0][1].ToString();
+            txtpassword.Text = pData.Rows[0][2].ToString();
+            txtusername.Text = pData.Rows[0][3].ToString();
+
+            chkadduser.Checked = (bool)pData.Rows[0][4];
+            chkdeluser.Checked = (bool)pData.Rows[0][5];
+            chkupdateuser.Checked = (bool)pData.Rows[0][6];
+            chkdelkontor.Checked = (bool)pData.Rows[0][7];
+            chkdelkontor.Checked = (bool)pData.Rows[0][7];
+            chkaddkontor.Checked = (bool)pData.Rows[0][8];
+            chkdelkontor.Checked = (bool)pData.Rows[0][9];
+            chkupdatekontor.Checked = (bool)pData.Rows[0][10];
+            chkdelmoshtarak.Checked = (bool)pData.Rows[0][11];
+            chkaddmoshtarak.Checked = (bool)pData.Rows[0][12];
+            chkdelmoshtarak.Checked = (bool)pData.Rows[0][13];
+            chkupdatemoshtarak.Checked = (bool)pData.Rows[0][14];
+            chklisttarefeh.Checked = (bool)pData.Rows[0][15];
+            chkaddtarefeh.Checked = (bool)pData.Rows[0][16];
+            chkdeltarefeh.Checked = (bool)pData.Rows[0][17];
+            chkupdatetarefeh.Checked = (bool)pData.Rows[0][18];
+            chklistghabz.Checked = (bool)pData.Rows[0][19];
+            chkaddghabz.Checked = (bool)pData.Rows[0][20];
+            chkdelghabz.Checked = (bool)pData.Rows[0][21];
+            chkupdateghabz.Checked = (bool)pData.Rows[0][22];
         }
     }
 }

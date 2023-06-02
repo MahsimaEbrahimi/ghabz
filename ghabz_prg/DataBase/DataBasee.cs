@@ -18,7 +18,9 @@ namespace ghabz_prg.DataBase.DataBasee
 
     class DataBasee
     {
-        private string connectionString = "data source=MSI;initial catalog=GHABZDB99;integrated security=SSPI;AttachDBFilename=|DataDirectory|\\GHABZDB99.mdf";
+        private string connectionString = "Data Source = DESKTOP-PF3K10O\\SQLEXPRESS; Initial Catalog = GHABZDB99; Integrated Security = SSPI; MultipleActiveResultSets = true";
+        //Data Source = DESKTOP-PF3K10O\\SQLEXPRESS; Initial Catalog = ShoppingSite; Integrated Security = SSPI; MultipleActiveResultSets = true
+        //data source=MSI;initial catalog=GHABZDB99;integrated security=SSPI;AttachDBFilename=|DataDirectory|\\GHABZDB99.mdf
 
 
         public bool add_user(Person p)
@@ -145,7 +147,7 @@ namespace ghabz_prg.DataBase.DataBasee
 
         public DataTable FindUser(string CodeM)
         {
-            string query = "Select * From Tbluser Where CodeM = " + CodeM;
+            string query = $"Select * From Tbluser Where CodeM = '{CodeM}'";
             SqlConnection Connection = new SqlConnection(connectionString);
             SqlDataAdapter Adapter = new SqlDataAdapter(query, Connection);
             DataTable data = new DataTable();
