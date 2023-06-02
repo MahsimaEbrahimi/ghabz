@@ -104,11 +104,11 @@ namespace ghabz_prg
             display();
         }
 
-        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
+        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
         {
             txtname.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
             txtcodemelli.Text = dataGridView1.CurrentRow.Cells["CodeM"].Value.ToString();
-            txtpassword.Text= dataGridView1.CurrentRow.Cells["Password"].Value.ToString();
+            txtpassword.Text = dataGridView1.CurrentRow.Cells["Password"].Value.ToString();
             txtusername.Text = dataGridView1.CurrentRow.Cells["UserName"].Value.ToString();
         }
     }
