@@ -142,5 +142,15 @@ namespace ghabz_prg.DataBase.DataBasee
         {
 
         }
+
+        public DataTable FindUser(string CodeM)
+        {
+            string query = "Select * From Tbluser Where CodeM = " + CodeM;
+            SqlConnection Connection = new SqlConnection(connectionString);
+            SqlDataAdapter Adapter = new SqlDataAdapter(query, Connection);
+            DataTable data = new DataTable();
+            Adapter.Fill(data);
+            return data;
+        }
     }
 }
