@@ -115,8 +115,8 @@ namespace ghabz_prg.DataBase.DataBasee
                 MessageBox.Show("کد ملی وارد نشده است");
                 return;
             }
-            string queryt = "Delete from Tbluser where CodeM = @CODE and Name=@NAME and UserName=@USERNAME and password=@PASSWOED";
-            SqlCommand cmd = new SqlCommand(queryt, con);
+            string query = "Delete from Tbluser where CodeM = @CODE and Name=@NAME and UserName=@USERNAME and password=@PASSWOED";
+            SqlCommand cmd = new SqlCommand(query, con);
             cmd.Parameters.AddWithValue("@CODE", p.CodeM);
             cmd.Parameters.AddWithValue("@NAME", p.Name);
             cmd.Parameters.AddWithValue("@USERNAME", p.UserName);
@@ -138,8 +138,16 @@ namespace ghabz_prg.DataBase.DataBasee
         }
 
         //
-        public void show_from_grid(DataGridView datagridview)
+        public DataSet Find_user(string CodeM)
         {
+            string query = "Select * From Tbluser Where CodeM = " + CodeM;
+            SqlConnection con = new SqlConnection(connectionString);
+            SqlDataAdapter Adapter = new SqlDataAdapter(query, con);
+            DataSet data = new DataSet();
+            Adapter.Fill(data);
+            return data;
+
+
 
         }
     }
