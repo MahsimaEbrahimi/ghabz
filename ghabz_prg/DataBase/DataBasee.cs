@@ -144,15 +144,16 @@ namespace ghabz_prg.DataBase.DataBasee
         {
             try
             {
-                string query = "Select * From Tbluser Where CodeM = " + CodeM;
+                string query = $"Select * From Tbluser Where CodeM = '{CodeM}'";
                 SqlConnection con = new SqlConnection(connectionString);
                 SqlDataAdapter Adapter = new SqlDataAdapter(query, con);
                 DataTable data = new DataTable();
                 Adapter.Fill(data);
                 return data;
             }
-            catch
+            catch (Exception ex)
             {
+                MessageBox.Show(ex.Message);
                 return null;
             }
         }
@@ -184,18 +185,5 @@ namespace ghabz_prg.DataBase.DataBasee
             return true;
 
         }
-
-<<<<<<< HEAD
-=======
-        public DataTable FindUser(string CodeM)
-        {
-            string query = $"Select * From Tbluser Where CodeM = '{CodeM}'";
-            SqlConnection Connection = new SqlConnection(connectionString);
-            SqlDataAdapter Adapter = new SqlDataAdapter(query, Connection);
-            DataTable data = new DataTable();
-            Adapter.Fill(data);
-            return data;
-        }
->>>>>>> 5e1ecbef4873743d8f54e480b0cdd870392025e8
     }
 }
