@@ -10,3 +10,17 @@ c:\users\mahsima\documents\visual studio 2015\Projects\ghabz_prg\ghabz_prg\obj\D
 c:\users\mahsima\documents\visual studio 2015\Projects\ghabz_prg\ghabz_prg\obj\Debug\ghabz_prg.pdb
 C:\Users\mahsima\documents\visual studio 2015\Projects\ghabz_prg\ghabz_prg\obj\Debug\ghabz_prg.frmuser.resources
 C:\Users\mahsima\Documents\Visual Studio 2015\Projects\ghabz_prg\ghabz_prg\obj\Debug\ghabz_prg.csprojResolveAssemblyReference.cache
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\bin\Debug\ghabz_prg.exe.config
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\bin\Debug\ghabz_prg.exe
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\bin\Debug\ghabz_prg.pdb
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\bin\Debug\DevComponents.DotNetBar2.xml
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\obj\Debug\ghabz_prg.csproj.AssemblyReference.cache
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\obj\Debug\ghabz_prg.csproj.SuggestedBindingRedirects.cache
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\obj\Debug\ghabz_prg.Form1.resources
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\obj\Debug\ghabz_prg.frmuser.resources
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\obj\Debug\ghabz_prg.Properties.Resources.resources
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\obj\Debug\ghabz_prg.csproj.GenerateResource.cache
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\obj\Debug\ghabz_prg.csproj.CoreCompileInputs.cache
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\obj\Debug\ghabz_prg.csproj.CopyComplete
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\obj\Debug\ghabz_prg.exe
+C:\Users\Lemika\Desktop\ghabz_git\ghabz_prg\obj\Debug\ghabz_prg.pdb
