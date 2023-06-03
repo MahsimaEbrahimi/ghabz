@@ -29,7 +29,7 @@ namespace ghabz_prg.DataBase.DataBasee
             cmd.Connection = con;
             try
             {
-                cmd.CommandText = "insert into Tbluser(Name,CodeM,UserName,Password,AddUser,Deluser,Upuser,Lkontor,Addkontor,Delkontor,Upkontor,LMoshtarak,AddMoshtarak,DelMoshtarak,UpMoshtarak,LTarefeh,AddTarefeh,DellTarefeh,UpTarefeh,LGhabz,AddGhabz,DelGhabz,UpGhabz,Lpardakht,Addpardakht,Delpardakht,Uppardakht,BK,RS,SMS)values(@Name,@CodeM,@UserName,@Password,@AddUser,@Deluser,@Upuser,@Lkontor,@Addkontor,@Delkontor,@Upkontor,@LMoshtarak,@AddMoshtarak,@DelMoshtarak,@UpMoshtarak,@LTarefeh,@AddTarefeh,@DellTarefeh,@UpTarefeh,@LGhabz,@AddGhabz,@DelGhabz,@UpGhabz,@Lpardakht,@Addpardakht,@Delpardakht,@Uppardakht,@BK,@RS,@SMS)";
+                cmd.CommandText = "insert into Tbluser(Name,CodeM,UserName,Password,AddUser,Deluser,LGhabz,AddGhabz,DelGhabz,UpGhabz,BK,RS,SMS)values(@Name,@CodeM,@UserName,@Password,@AddUser,@Deluser,@Upuser,@LGhabz,@AddGhabz,@DelGhabz,@UpGhabz,@BK,@RS,@SMS)";
                 cmd.Parameters.AddWithValue("@Name", p.Name);
                 cmd.Parameters.AddWithValue("@CodeM", p.CodeM);
                 cmd.Parameters.AddWithValue("@UserName", p.UserName);
@@ -39,30 +39,30 @@ namespace ghabz_prg.DataBase.DataBasee
                 cmd.Parameters.AddWithValue("@Deluser", p.Deluser);
                 cmd.Parameters.AddWithValue("@Upuser", p.Upuser);
 
-                cmd.Parameters.AddWithValue("@Lkontor", p.Lkontor);
-                cmd.Parameters.AddWithValue("@Addkontor", p.Addkontor);
-                cmd.Parameters.AddWithValue("@Delkontor", p.Delkontor);
-                cmd.Parameters.AddWithValue("@Upkontor", p.Upkontor);
+                //cmd.Parameters.AddWithValue("@Lkontor", p.Lkontor);
+                //cmd.Parameters.AddWithValue("@Addkontor", p.Addkontor);
+                //cmd.Parameters.AddWithValue("@Delkontor", p.Delkontor);
+                //cmd.Parameters.AddWithValue("@Upkontor", p.Upkontor);
 
-                cmd.Parameters.AddWithValue("@LMoshtarak", p.LMoshtarak);
-                cmd.Parameters.AddWithValue("@AddMoshtarak", p.AddMoshtarak);
-                cmd.Parameters.AddWithValue("@DelMoshtarak", p.DelMoshtarak);
-                cmd.Parameters.AddWithValue("@UpMoshtarak", p.UpMoshtarak);
+                //cmd.Parameters.AddWithValue("@LMoshtarak", p.LMoshtarak);
+                //cmd.Parameters.AddWithValue("@AddMoshtarak", p.AddMoshtarak);
+                //cmd.Parameters.AddWithValue("@DelMoshtarak", p.DelMoshtarak);
+                //cmd.Parameters.AddWithValue("@UpMoshtarak", p.UpMoshtarak);
 
-                cmd.Parameters.AddWithValue("@LTarefeh", p.LTarefeh);
-                cmd.Parameters.AddWithValue("@AddTarefeh", p.AddTarefeh);
-                cmd.Parameters.AddWithValue("@DellTarefeh", p.DellTarefeh);
-                cmd.Parameters.AddWithValue("@UpTarefeh", p.UpTarefeh);
+                //cmd.Parameters.AddWithValue("@LTarefeh", p.LTarefeh);
+                //cmd.Parameters.AddWithValue("@AddTarefeh", p.AddTarefeh);
+                //cmd.Parameters.AddWithValue("@DellTarefeh", p.DellTarefeh);
+                //cmd.Parameters.AddWithValue("@UpTarefeh", p.UpTarefeh);
 
                 cmd.Parameters.AddWithValue("@LGhabz", p.LGhabz);
                 cmd.Parameters.AddWithValue("@AddGhabz", p.AddGhabz);
                 cmd.Parameters.AddWithValue("@DelGhabz", p.DelGhabz);
                 cmd.Parameters.AddWithValue("@UpGhabz", p.UpGhabz);
 
-                cmd.Parameters.AddWithValue("@Lpardakht", p.Lpardakht);
-                cmd.Parameters.AddWithValue("@Addpardakht", p.Addpardakht);
-                cmd.Parameters.AddWithValue("@Delpardakht", p.Delpardakht);
-                cmd.Parameters.AddWithValue("@Uppardakht", p.Uppardakht);
+                //cmd.Parameters.AddWithValue("@Lpardakht", p.Lpardakht);
+                //cmd.Parameters.AddWithValue("@Addpardakht", p.Addpardakht);
+                //cmd.Parameters.AddWithValue("@Delpardakht", p.Delpardakht);
+                //cmd.Parameters.AddWithValue("@Uppardakht", p.Uppardakht);
 
                 cmd.Parameters.AddWithValue("@BK", p.BK);
                 cmd.Parameters.AddWithValue("@RS", p.RS);
@@ -82,7 +82,7 @@ namespace ghabz_prg.DataBase.DataBasee
                 con.Close();
             }
         }
-        
+
         //show contents on data grid view
         public DataSet put_in_gridview()
         {
@@ -116,7 +116,7 @@ namespace ghabz_prg.DataBase.DataBasee
                 return;
             }
             string query = "Delete from Tbluser where CodeM = @CODE and Name=@NAME and UserName=@USERNAME and password=@PASSWOED";
-            SqlCommand cmd = new SqlCommand(query, con);
+            SqlCommand cmd = new SqlCommand(query, con); //با اینا بنویسش
             cmd.Parameters.AddWithValue("@CODE", p.CodeM);
             cmd.Parameters.AddWithValue("@NAME", p.Name);
             cmd.Parameters.AddWithValue("@USERNAME", p.UserName);
@@ -137,18 +137,51 @@ namespace ghabz_prg.DataBase.DataBasee
 
         }
 
-        //
-        public DataSet Find_user(string CodeM)
+
+        public DataTable FindUser(string CodeM)
         {
-            string query = "Select * From Tbluser Where CodeM = " + CodeM;
+            try
+            {
+                string query = "Select * From Tbluser Where CodeM = " + CodeM;
+                SqlConnection con = new SqlConnection(connectionString);
+                SqlDataAdapter Adapter = new SqlDataAdapter(query, con);
+                DataTable data = new DataTable();
+                Adapter.Fill(data);
+                return data;
+            }
+            catch
+            {
+                return null;
+            }
+        }
+
+        public bool EditUser(Person p)
+        {
+            string query = "Update Tbluser Set Name = @Name, UserName = @UserName, Password = @Password, AddUser = @AddUser, Deluser = @Deluser, Upuser = @Upuser, LGhabz = @LGhabz, AddGhabz = @AddGhabz , DelGhabz = @DelGhabz, UpGhabz = @UpGhabz, BK = @BK, RS = @RS, SMS = @SMS WHERE CodeM = @CodeM";
             SqlConnection con = new SqlConnection(connectionString);
-            SqlDataAdapter Adapter = new SqlDataAdapter(query, con);
-            DataSet data = new DataSet();
-            Adapter.Fill(data);
-            return data;
+            SqlCommand cmd = new SqlCommand(query, con);
+            cmd.Parameters.AddWithValue("@Name", p.Name);
+            cmd.Parameters.AddWithValue("@CodeM", p.CodeM);
+            cmd.Parameters.AddWithValue("@UserName", p.UserName);
+            cmd.Parameters.AddWithValue("@Password", p.Password);
 
+            cmd.Parameters.AddWithValue("@AddUser", p.AddUser);
+            cmd.Parameters.AddWithValue("@Deluser", p.Deluser);
+            cmd.Parameters.AddWithValue("@Upuser", p.Upuser);
 
+            cmd.Parameters.AddWithValue("@LGhabz", p.LGhabz);
+            cmd.Parameters.AddWithValue("@AddGhabz", p.AddGhabz);
+            cmd.Parameters.AddWithValue("@DelGhabz", p.DelGhabz);
+            cmd.Parameters.AddWithValue("@UpGhabz", p.UpGhabz);
+
+            cmd.Parameters.AddWithValue("@BK", p.BK);
+            cmd.Parameters.AddWithValue("@RS", p.RS);
+            cmd.Parameters.AddWithValue("@SMS", p.SMS);
+            con.Open();
+            cmd.ExecuteNonQuery();
+            return true;
 
         }
+
     }
 }

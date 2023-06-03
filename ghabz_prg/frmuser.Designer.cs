@@ -31,7 +31,6 @@
             this.groupPanel1 = new DevComponents.DotNetBar.Controls.GroupPanel();
             this.dataGridView1 = new System.Windows.Forms.DataGridView();
             this.groupPanel2 = new DevComponents.DotNetBar.Controls.GroupPanel();
-            this.btnupdate = new DevComponents.DotNetBar.ButtonX();
             this.btndelete = new DevComponents.DotNetBar.ButtonX();
             this.btnsave = new DevComponents.DotNetBar.ButtonX();
             this.label1 = new System.Windows.Forms.Label();
@@ -130,13 +129,12 @@
             this.dataGridView1.RowTemplate.Height = 24;
             this.dataGridView1.Size = new System.Drawing.Size(279, 610);
             this.dataGridView1.TabIndex = 0;
-            this.dataGridView1.CellMouseDown += new System.Windows.Forms.DataGridViewCellMouseEventHandler(this.dataGridView1_CellMouseDown);
+            this.dataGridView1.CellContentClick += new System.Windows.Forms.DataGridViewCellEventHandler(this.dataGridView1_CellContentClick);
             // 
             // groupPanel2
             // 
             this.groupPanel2.CanvasColor = System.Drawing.SystemColors.Control;
             this.groupPanel2.ColorSchemeStyle = DevComponents.DotNetBar.eDotNetBarStyle.Office2007;
-            this.groupPanel2.Controls.Add(this.btnupdate);
             this.groupPanel2.Controls.Add(this.btndelete);
             this.groupPanel2.Controls.Add(this.btnsave);
             this.groupPanel2.DisabledBackColor = System.Drawing.Color.Empty;
@@ -174,27 +172,13 @@
             this.groupPanel2.StyleMouseOver.CornerType = DevComponents.DotNetBar.eCornerType.Square;
             this.groupPanel2.TabIndex = 1;
             // 
-            // btnupdate
-            // 
-            this.btnupdate.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
-            this.btnupdate.BackColor = System.Drawing.Color.Transparent;
-            this.btnupdate.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
-            this.btnupdate.Image = global::ghabz_prg.Properties.Resources.folder_edit_icon;
-            this.btnupdate.Location = new System.Drawing.Point(203, 3);
-            this.btnupdate.Name = "btnupdate";
-            this.btnupdate.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(19, 2, 2, 19);
-            this.btnupdate.Size = new System.Drawing.Size(100, 47);
-            this.btnupdate.Style = DevComponents.DotNetBar.eDotNetBarStyle.StyleManagerControlled;
-            this.btnupdate.TabIndex = 0;
-            this.btnupdate.Text = "ویرایش";
-            // 
             // btndelete
             // 
             this.btndelete.AccessibleRole = System.Windows.Forms.AccessibleRole.PushButton;
             this.btndelete.BackColor = System.Drawing.Color.Transparent;
             this.btndelete.ColorTable = DevComponents.DotNetBar.eButtonColor.OrangeWithBackground;
             this.btndelete.Image = global::ghabz_prg.Properties.Resources.document_delete_32;
-            this.btndelete.Location = new System.Drawing.Point(309, 3);
+            this.btndelete.Location = new System.Drawing.Point(165, 5);
             this.btndelete.Name = "btndelete";
             this.btndelete.Shape = new DevComponents.DotNetBar.RoundRectangleShapeDescriptor(19, 2, 2, 19);
             this.btndelete.Size = new System.Drawing.Size(100, 47);
@@ -731,7 +715,6 @@
 
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel1;
         private DevComponents.DotNetBar.Controls.GroupPanel groupPanel2;
-        private DevComponents.DotNetBar.ButtonX btnupdate;
         private DevComponents.DotNetBar.ButtonX btndelete;
         private DevComponents.DotNetBar.ButtonX btnsave;
         private System.Windows.Forms.DataGridView dataGridView1;

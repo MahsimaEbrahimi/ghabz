@@ -56,39 +56,62 @@ namespace ghabz_prg
 
         private void btnsave_Click(object sender, EventArgs e)
         {
+
+            int num;
+            bool isNumeric = int.TryParse(txtcodemelli.Text, out num);
+
+            if (isNumeric)
+            {
+                Person p = new Person();
+                p.Name = txtname.Text;
+                p.CodeM = txtcodemelli.Text;
+                p.UserName = txtusername.Text;
+                p.Password = txtpassword.Text;
+                p.AddUser = chkadduser.Checked;
+                p.Deluser = chkdeluser.Checked;
+                p.Upuser = chkupdateuser.Checked;
+                //p.Lkontor = chklistcontor.Checked;
+                //p.Addkontor = chkaddkontor.Checked;
+                //p.Delkontor = chkdelkontor.Checked;
+                //p.Upkontor = chkupdatekontor.Checked;
+                //p.LMoshtarak = chklistmoshtarak.Checked;
+                //p.AddMoshtarak = chkaddmoshtarak.Checked;
+                //p.DelMoshtarak = chkdelmoshtarak.Checked;
+                //p.UpMoshtarak = chkupdatemoshtarak.Checked;
+                //p.LTarefeh = chklisttarefeh.Checked;
+                //p.AddTarefeh = chkaddtarefeh.Checked;
+                //p.DellTarefeh = chkdeltarefeh.Checked;
+                //p.UpTarefeh = chkupdatetarefeh.Checked;
+                p.LGhabz = chklistghabz.Checked;
+                p.AddGhabz = chkaddghabz.Checked;
+                p.DelGhabz = chkdelghabz.Checked;
+                p.UpGhabz = chkupdateghabz.Checked;
+                //p.Lpardakht = chklistPR.Checked;
+                //p.Addpardakht = chkaddPR.Checked;
+                //p.Delpardakht = chkdelPR.Checked;
+                //p.Uppardakht = chkUpdatePR.Checked;
+                p.BK = chkUpdate.Checked;
+                p.RS = chkRs.Checked;
+                p.SMS = chkSMS.Checked;
+
+                if (database.FindUser(p.CodeM).Equals(null))
+                {
+
+                database.add_user(p);
+                }
+                else
+                {
+                    MessageBox.Show("its not null"+database.FindUser(p.CodeM).ToString());
+                    database.EditUser(p);
+                }
+
+
+            }
+            else
+            {
+                MessageBox.Show("کد ملی معتبر وارد کنید");
+            }
             
-            Person p = new Person();
-            p.Name = txtname.Text;
-            p.CodeM = txtcodemelli.Text;
-            p.UserName = txtusername.Text;
-            p.Password = txtpassword.Text;
-            p.AddUser = chkadduser.Checked;
-            p.Deluser = chkdeluser.Checked;
-            p.Upuser = chkupdateuser.Checked;
-            p.Lkontor = chklistcontor.Checked;
-            p.Addkontor = chkaddkontor.Checked;
-            p.Delkontor = chkdelkontor.Checked;
-            p.Upkontor = chkupdatekontor.Checked;
-            p.LMoshtarak = chklistmoshtarak.Checked;
-            p.AddMoshtarak = chkaddmoshtarak.Checked;
-            p.DelMoshtarak = chkdelmoshtarak.Checked;
-            p.UpMoshtarak = chkupdatemoshtarak.Checked;
-            p.LTarefeh = chklisttarefeh.Checked;
-            p.AddTarefeh = chkaddtarefeh.Checked;
-            p.DellTarefeh = chkdeltarefeh.Checked;
-            p.UpTarefeh = chkupdatetarefeh.Checked;
-            p.LGhabz = chklistghabz.Checked;
-            p.AddGhabz = chkaddghabz.Checked;
-            p.DelGhabz = chkdelghabz.Checked;
-            p.UpGhabz = chkupdateghabz.Checked;
-            p.Lpardakht = chklistPR.Checked;
-            p.Addpardakht = chkaddPR.Checked;
-            p.Delpardakht = chkdelPR.Checked;
-            p.Uppardakht = chkUpdatePR.Checked;
-            p.BK = chkUpdate.Checked;
-            p.RS = chkRs.Checked;
-            p.SMS = chkSMS.Checked;
-            database.add_user(p);
 
             display();
         }
@@ -104,12 +127,38 @@ namespace ghabz_prg
             display();
         }
 
-        private void dataGridView1_CellMouseDown(object sender, DataGridViewCellMouseEventArgs e)
+        private void dataGridView1_CellContentClick(object sender, DataGridViewCellEventArgs e)
         {
-            txtname.Text = dataGridView1.CurrentRow.Cells["Name"].Value.ToString();
-            txtcodemelli.Text = dataGridView1.CurrentRow.Cells["CodeM"].Value.ToString();
-            txtpassword.Text = dataGridView1.CurrentRow.Cells["Password"].Value.ToString();
-            txtusername.Text = dataGridView1.CurrentRow.Cells["UserName"].Value.ToString();
+            var pData = database.FindUser(dataGridView1.CurrentRow.Cells["CodeM"].Value.ToString());
+
+            if (pData != null)
+            {
+                txtname.Text = pData.Rows[0][0].ToString();
+                txtcodemelli.Text = pData.Rows[0][1].ToString();
+                txtpassword.Text = pData.Rows[0][2].ToString();
+                txtusername.Text = pData.Rows[0][3].ToString();
+
+                chkadduser.Checked = (bool)pData.Rows[0][4];//ina chie?
+                chkdeluser.Checked = (bool)pData.Rows[0][5];
+                chkupdateuser.Checked = (bool)pData.Rows[0][6];
+                chkdelkontor.Checked = (bool)pData.Rows[0][7];
+                chkdelkontor.Checked = (bool)pData.Rows[0][7];
+                chkaddkontor.Checked = (bool)pData.Rows[0][8];
+                chkdelkontor.Checked = (bool)pData.Rows[0][9];
+                chkupdatekontor.Checked = (bool)pData.Rows[0][10];
+                chkdelmoshtarak.Checked = (bool)pData.Rows[0][11];
+                chkaddmoshtarak.Checked = (bool)pData.Rows[0][12];
+                chkdelmoshtarak.Checked = (bool)pData.Rows[0][13];
+                chkupdatemoshtarak.Checked = (bool)pData.Rows[0][14];
+                chklisttarefeh.Checked = (bool)pData.Rows[0][15];
+                chkaddtarefeh.Checked = (bool)pData.Rows[0][16];
+                chkdeltarefeh.Checked = (bool)pData.Rows[0][17];
+                chkupdatetarefeh.Checked = (bool)pData.Rows[0][18];
+                chklistghabz.Checked = (bool)pData.Rows[0][19];
+                chkaddghabz.Checked = (bool)pData.Rows[0][20];
+                chkdelghabz.Checked = (bool)pData.Rows[0][21];
+                chkupdateghabz.Checked = (bool)pData.Rows[0][22];
+            }
         }
     }
 }
